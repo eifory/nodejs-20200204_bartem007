@@ -2,16 +2,6 @@ const Product = require('../models/Product');
 const mongoose = require('mongoose');
 const formatProduct = require('../format/formatProduct');
 
-// module.exports.productsBySubcategory = async function productsBySubcategory(ctx, next) {
-//   const subcategory = ctx.query.subcategory;
-//   const products = await Product.find({
-//     subcategory: subcategory,
-//   });
-//   ctx.body = {
-//     products: products.map(formatProduct),
-//   };
-// };
-
 module.exports.productList = async function productList(ctx, next) {
   if (ctx.query.subcategory) {
     const subcategory = ctx.query.subcategory;

@@ -7,20 +7,13 @@ module.exports.register = async (ctx, next) => {
   let user = await User.findOne({email});
   
   if (user) {
-    ctx.throw(400, {
+    ctx.status = 400;
+    return ctx.body = {
       errors: {
         email: 'Такой email уже существует',
       },
-    });
+    };
   }
-
-    // ctx.status = 400;
-    // return ctx.body = {
-    //   errors: {
-    //     email: 'Такой email уже существует',
-    //   },
-    // };
-  //}
 
   try {
     const verificationToken = uuid();

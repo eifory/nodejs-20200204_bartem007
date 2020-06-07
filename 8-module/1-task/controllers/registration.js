@@ -46,7 +46,6 @@ module.exports.register = async (ctx, next) => {
 
 module.exports.confirm = async (ctx, next) => {
   const { verificationToken } = ctx.request.body;
-  console.log(verificationToken);
   const user = await User.findOne({verificationToken});
   if (!user) {
     return ctx.throw(400, 'Ссылка подтверждения недействительна или устарела');
